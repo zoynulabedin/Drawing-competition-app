@@ -16,7 +16,7 @@ export default function AdmitCard({ student }: { student: Student }) {
     <div className="flex flex-col gap-6 items-center">
       <div
         id="print-area"
-        className="bg-white text-gray-900 p-8 rounded-xl shadow-2xl max-w-2xl w-full border-[10px] border-double border-purple-200 relative overflow-hidden"
+        className="bg-white text-gray-900 p-4 md:p-8 rounded-xl shadow-2xl max-w-2xl w-full border-4 md:border-[10px] border-double border-purple-200 relative overflow-hidden"
       >
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
@@ -24,17 +24,17 @@ export default function AdmitCard({ student }: { student: Student }) {
         </div>
 
         <div className="text-center border-b-2 border-dashed border-gray-300 pb-6 mb-6">
-          <h2 className="text-3xl font-extrabold text-purple-700 uppercase tracking-wider">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-purple-700 uppercase tracking-wider">
             Admit Card
           </h2>
-          <h3 className="text-xl font-bold text-gray-600 mt-2">
+          <h3 className="text-lg md:text-xl font-bold text-gray-600 mt-2">
             Annual Drawing Competition 2025
           </h3>
         </div>
 
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
           <div className="flex-shrink-0">
-            <div className="w-40 h-40 rounded-lg overflow-hidden border-4 border-gray-200 shadow-inner">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-lg overflow-hidden border-4 border-gray-200 shadow-inner">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={student.profilePhoto}
@@ -46,7 +46,7 @@ export default function AdmitCard({ student }: { student: Student }) {
               <span className="block text-xs text-gray-500 uppercase font-bold tracking-widest">
                 Roll Number
               </span>
-              <span className="block text-4xl font-black text-indigo-600 font-mono tracking-tighter">
+              <span className="block text-3xl md:text-4xl font-black text-indigo-600 font-mono tracking-tighter">
                 {student.rollNumber}
               </span>
             </div>
@@ -62,7 +62,7 @@ export default function AdmitCard({ student }: { student: Student }) {
                   {student.studentName}
                 </span>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
                   <span className="block text-gray-500 text-xs uppercase font-bold">
                     Father's Name
@@ -76,7 +76,7 @@ export default function AdmitCard({ student }: { student: Student }) {
                   <span className="font-medium">{student.motherName}</span>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
                   <span className="block text-gray-500 text-xs uppercase font-bold">
                     Group
@@ -122,12 +122,12 @@ export default function AdmitCard({ student }: { student: Student }) {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-gray-200 flex justify-between items-end">
-          <div className="text-xs text-gray-400 max-w-[200px]">
-            * Please bring this admit card to the venue. * Reporting time: 9:00
-            AM.
+        <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-end gap-4 sm:gap-0">
+          <div className="text-xs text-gray-400 max-w-full sm:max-w-[200px] text-center sm:text-left">
+            * Please bring this admit card to the venue. <br /> * Reporting
+            time: 9:00 AM.
           </div>
-          <div className="text-right">
+          <div className="text-right flex flex-col items-center sm:items-end w-full sm:w-auto">
             <div className="h-10 w-32 border-b border-gray-400 mb-1"></div>
             <span className="text-xs text-gray-500 uppercase font-bold">
               Authorized Signature
