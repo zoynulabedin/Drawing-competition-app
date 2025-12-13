@@ -112,7 +112,7 @@ export default function AdmitCard({ student }: { student: Student }) {
           <div className="flex flex-col items-center justify-center">
             <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-200">
               <QRCodeSVG
-                value={`https://drawing-comp.com/verify/${student.id}`}
+                value={`https://drawing.appaza.dev/verify/${student.id}`}
                 size={120}
               />
             </div>
