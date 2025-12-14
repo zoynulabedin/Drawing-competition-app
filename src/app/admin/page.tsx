@@ -80,9 +80,7 @@ export default function AdminLogin() {
           >
             Login
           </button>
-          <div className="text-center text-xs text-gray-400 mt-4">
-            Demo credentials: admin / admin123
-          </div>
+          <div className="text-center text-xs text-gray-400 mt-4"></div>
         </form>
       </div>
     </div>
