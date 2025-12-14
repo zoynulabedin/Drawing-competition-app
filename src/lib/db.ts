@@ -28,6 +28,8 @@ export async function getStudents(): Promise<Student[]> {
     ...student,
     registrationDate: student.registrationDate.toISOString(),
     profilePhoto: `/api/students/photo?id=${student.id}`,
+    group: student.group as Student["group"],
+    position: student.position === null ? undefined : student.position,
   }));
 }
 
