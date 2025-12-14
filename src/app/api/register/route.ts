@@ -86,6 +86,7 @@ export async function POST(request: Request) {
       CLOUDINARY_URL: !!process.env.CLOUDINARY_URL,
       API_KEY: !!process.env.CLOUDINARY_API_KEY,
       API_SECRET: !!process.env.CLOUDINARY_API_SECRET,
+      API_SECRET_KEY: !!process.env.CLOUDINARY_API_SECRET_KEY,
     });
 
     // Upload image to Cloudinary
