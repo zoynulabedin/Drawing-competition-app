@@ -1,10 +1,35 @@
 import { NextResponse } from "next/server";
 import { saveStudent, getNextRollNumber } from "@/lib/db";
 import { Student } from "@/lib/types";
+import fs from "fs";
+import path from "path";
 
 import cloudinary from "@/lib/cloudinary";
 
+const reloadEnv = () => {
+  try {
+    const envPath = path.join(process.cwd(), ".env");
+    if (fs.existsSync(envPath)) {
+      const fileContent = fs.readFileSync(envPath, "utf-8");
+      fileContent.split("\n").forEach((line) => {
+        const [key, value] = line.split("=");
+        if (key && value) {
+          const trimmedKey = key.trim();
+          const trimmedValue = value.trim().replace(/^["']|["']$/g, ""); // Remove quotes
+          if (!process.env[trimmedKey]) {
+            process.env[trimmedKey] = trimmedValue;
+          }
+        }
+      });
+    }
+  } catch (error) {
+    console.error("Error reloading env:", error);
+  }
+};
+
 export async function POST(request: Request) {
+  reloadEnv(); // Force reload env vars
+
   try {
     const body = await request.json();
 
