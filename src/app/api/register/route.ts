@@ -25,7 +25,8 @@ export async function POST(request: Request) {
     // Upload image to Cloudinary
     const cloudName =
       process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ||
-      process.env.CLOUDINARY_CLOUD_NAME;
+      process.env.CLOUDINARY_CLOUD_NAME ||
+      process.env.CLOUD_NAME;
     if (!cloudName) {
       throw new Error("Cloudinary Cloud Name is not configured");
     }
