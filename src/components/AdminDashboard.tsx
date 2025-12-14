@@ -70,10 +70,10 @@ export default function AdminDashboard() {
     return <div className="text-white text-center mt-20">Loading...</div>;
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 gap-4">
+          <div className="text-center md:text-left">
             <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
             <p className="text-white/70">Manage students and results</p>
           </div>
@@ -87,8 +87,8 @@ export default function AdminDashboard() {
         </div>
 
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-          <div className="p-6 border-b border-gray-100 flex gap-4 items-center">
-            <div className="relative flex-1">
+          <div className="p-6 border-b border-gray-100 flex flex-col md:flex-row gap-4 items-center">
+            <div className="relative flex-1 w-full">
               <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                 size={20}
@@ -101,7 +101,7 @@ export default function AdminDashboard() {
                 onChange={(e) => setFilter(e.target.value)}
               />
             </div>
-            <div className="bg-purple-50 px-4 py-2 rounded-lg text-purple-700 font-bold border border-purple-100">
+            <div className="bg-purple-50 px-4 py-2 rounded-lg text-purple-700 font-bold border border-purple-100 flex-shrink-0">
               Total Students: {students.length}
             </div>
           </div>
