@@ -23,6 +23,13 @@ export async function POST(request: Request) {
     }
 
     // Upload image to Cloudinary
+    const cloudName =
+      process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ||
+      process.env.CLOUDINARY_CLOUD_NAME;
+    if (!cloudName) {
+      throw new Error("Cloudinary Cloud Name is not configured");
+    }
+
     const uploadResponse = await cloudinary.uploader.upload(body.profilePhoto, {
       folder: "drawing-competition",
     });
@@ -47,7 +54,9 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Registration error:", error);
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      {
+        error: error instanceof Error ? error.message : "Internal Server Error",
+      },
       { status: 500 }
     );
   }
