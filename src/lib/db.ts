@@ -11,8 +11,24 @@ function mapToStudent(data: any): Student {
 export async function getStudents(): Promise<Student[]> {
   const students = await prisma.student.findMany({
     orderBy: { registrationDate: "desc" },
+    select: {
+      id: true,
+      rollNumber: true,
+      studentName: true,
+      fatherName: true,
+      motherName: true,
+      mobileNo: true,
+      group: true,
+      registrationDate: true,
+      position: true,
+    },
   });
-  return students.map(mapToStudent);
+
+  return students.map((student) => ({
+    ...student,
+    registrationDate: student.registrationDate.toISOString(),
+    profilePhoto: `/api/students/photo?id=${student.id}`,
+  }));
 }
 
 export async function saveStudent(student: Student) {

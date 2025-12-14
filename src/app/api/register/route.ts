@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { saveStudent, getNextRollNumber } from "@/lib/db";
 import { Student } from "@/lib/types";
 
+import cloudinary from "@/lib/cloudinary";
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -20,6 +22,11 @@ export async function POST(request: Request) {
       );
     }
 
+    // Upload image to Cloudinary
+    const uploadResponse = await cloudinary.uploader.upload(body.profilePhoto, {
+      folder: "drawing-competition",
+    });
+
     const rollNumber = await getNextRollNumber();
 
     const newStudent: Student = {
@@ -30,7 +37,7 @@ export async function POST(request: Request) {
       motherName: body.motherName,
       mobileNo: body.mobileNo,
       group: body.group,
-      profilePhoto: body.profilePhoto,
+      profilePhoto: uploadResponse.secure_url,
       registrationDate: new Date().toISOString(),
     };
 
